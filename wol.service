@@ -1,0 +1,18 @@
+[Unit]
+# 服务名称，可自定义
+Description = wol server
+After = network.target syslog.target
+Wants = network.target
+
+[Service]
+Type = simple
+# 启动wol的命令，需修改为您的wol的安装路径
+ExecStart = /bin/bash -c  "/usr/bin/python /home/lyz/wol/wol_interface.py"
+
+# 指定用户, 避免出现找不到python的包
+User = lyz
+
+
+[Install]
+WantedBy = multi-user.target
+
